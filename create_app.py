@@ -22,3 +22,7 @@ def create_app():
     migrate.init_app(app, db)
     
     # Import and register the blueprints
+    from .authentication import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    
+    return app
